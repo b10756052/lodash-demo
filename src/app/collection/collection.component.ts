@@ -17,7 +17,8 @@ export class CollectionComponent implements OnInit {
         name: '_.countBy(collection, [iteratee=_.identity])',
         description: '創建物件，key是計算出來的值，value是值出現的次數',
         link: 'https://lodash.com/docs/4.17.15#countBy',
-        example: this.getCountByExample()
+        example: this.getCountByExample(),
+        nativeExample: this.getCountByNativeExample()
       },
 
       // each => forEach
@@ -106,7 +107,8 @@ export class CollectionComponent implements OnInit {
         name: '_.groupBy(collection, [iteratee=_.identity])',
         description: '根據函數結果將集合元素分組成物件',
         link: 'https://lodash.com/docs/4.17.15#groupBy',
-        example: this.getGroupByExample()
+        example: this.getGroupByExample(),
+        nativeExample: this.getGroupByNativeExample()
       },
 
       // includes
@@ -147,6 +149,19 @@ _.countBy(nameArr);
 _.countBy(nameObj, (value) => \`\${value}歲\`);
 // => { '25歲': 2, '30歲': 2, '35歲': 1 }
 `
+  }
+
+  /** _.countBy 原生 */
+  getCountByNativeExample() {
+    return `const nameArr = ['jack', 'jeff', 'tom', 'candy'];
+const result: Record<number, number> = {};
+
+// 跑迴圈計算長度出現次數
+for (const name of nameArr) {
+  const key = name.length;
+  result[key] = (result[key] || 0) + 1;
+}
+// => { '3': 1, '4': 2, '5': 1 }`
   }
 
   // #endregion
@@ -547,6 +562,23 @@ _.groupBy(arr, 'length');
 _.groupBy(objs, obj => _.sum(obj.student.scores));
 // => { '100': [{ student: { scores: [50, 50] } }, { student: { scores: [100] } }], '120': [{ student: { scores: [60, 60] } }] }
 `;
+  }
+
+  /** _.groupBy 原生 */
+  getGroupByNativeExample() {
+    return `const arr = ['hello', 'world', 'hi', 'ok'];
+const result: Record<number, Array<string>> = {};
+
+
+// 將字串依長度分組
+for (const str of arr) {
+  const key = str.length;
+  if (!result[key]) {
+    result[key] = [];
+  }
+  result[key].push(str);
+}
+// => { '2': ['hi', 'ok'], '5': ['hello', 'world'] }`;
   }
 
   // #endregion
