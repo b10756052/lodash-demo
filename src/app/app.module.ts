@@ -4,10 +4,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CollectionComponent } from './collection/collection.component';
+import { LangComponent } from './lang/lang.component';
 import { NgModule } from '@angular/core';
 
 const comps = [
-  CollectionComponent
+  CollectionComponent,
+  LangComponent
 ]
 
 const HIGHLIGHT_PROVIDE = {

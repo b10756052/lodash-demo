@@ -1,29 +1,35 @@
-<h1 class="type-title">Collection</h1>
+<h1 class="type-title">{{ title }}</h1>
 
 <div class="method-block" *ngFor="let item of methods">
-  <!-- 連結 -->
-  <a class="doc-link" [href]="item.link" [target]="'_blank'">{{ item.name }}</a>
+  <a class="doc-link" [href]="item.link" target="_blank">{{ item.name }}</a>
 
-  <!-- 解釋 -->
   <div>
     <p class="description-text">{{ item.description }}</p>
   </div>
 
-  <!-- 範例 -->
   <div>
     <p>範例：</p>
     <pre><code [highlight]="item.example"></code></pre>
   </div>
 
-  <!-- 注意事項 -->
   <div *ngIf="item.notes">
     <p>注意事項：</p>
     <pre><code [highlight]="item.notes"></code></pre>
   </div>
 
-  <!-- 原生 -->
   <div *ngIf="item.nativeExample">
     <p>原生：</p>
     <pre><code [highlight]="item.nativeExample"></code></pre>
+  </div>
+
+  <div *ngIf="item.references && item.references.length > 0">
+    <p>相關連結：</p>
+    <ul class="references">
+      <li *ngFor="let ref of item.references">
+        <a [href]="ref.url" target="_blank" [title]="ref.url">
+          {{ ref.label || ref.url }}
+        </a>
+      </li>
+    </ul>
   </div>
 </div>

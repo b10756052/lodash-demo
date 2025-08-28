@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Method } from '../models/method.model';
 import _ from 'lodash';
 
 @Component({
   selector: 'app-collection',
-  templateUrl: './collection.component.html',
-  styleUrl: './collection.component.scss'
+  templateUrl: '../shared/method-list.template.html',
 })
 export class CollectionComponent implements OnInit {
+  /** 標題 */
+  title = 'Collection';
+  /** 列表 */
   methods: Array<Method> = [];
 
   ngOnInit(): void {
@@ -623,19 +626,4 @@ arr.includes(2);
   }
 
   // #endregion
-}
-
-interface Method {
-  /** 名稱 */
-  name: string;
-  /** 解釋 */
-  description: string;
-  /** 文件連結 */
-  link: string;
-  /** 範例 */
-  example: string;
-  /** 注意事項 */
-  notes?: string;
-  /** 原生 */
-  nativeExample?: string;
 }

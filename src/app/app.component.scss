@@ -153,6 +153,21 @@ $title-color: #2c3e50;
           border-radius: 4px;
           font-size: 15px;
         }
+
+        // 相關連結
+        ul.references {
+          padding-inline-start: 20px;
+          list-style: circle;
+          li {
+            a {
+              color: #2563eb;
+              text-decoration: none;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
       }
     }
 
